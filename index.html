@@ -1,101 +1,743 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-    <style>
-        header {
-            background-color: #1936b4;
-            color: #ffffff1c;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        main {
-            background-color: #f2f2f2;
-            color: #4b1863;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
-        }
-        article{
-            display: flex;
-        }
+<title>Universo da Música</title>
 
-        img {
-            width: 80px;
-            height: 80px;
-        }
+<style>
 
-        .artigo-autor {
-            font-weight: bold;
-        }
-    </style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07152e;
+    color: #eef5ff;
+    min-height: 100vh;
+}
+
+.pagina {
+    width: min(1150px, 92%);
+    margin: auto;
+    padding: 40px 0 30px;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    gap: 30px;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #1976ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 8px 25px rgba(25,118,255,.3);
+}
+
+.marca-texto {
+    font-size: 13px;
+    color: #7da8dc;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.marca h2 {
+    font-size: 18px;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #91a8c7;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.menu a:hover {
+    color: #4d9aff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(35,126,255,.35), transparent 30%),
+        linear-gradient(135deg, #0b2250, #0b1935);
+    border-radius: 28px;
+    padding: 55px;
+    overflow: hidden;
+    border: 1px solid #173b72;
+    min-height: 320px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(82,157,255,.2);
+    right: -80px;
+    top: -80px;
+}
+
+.hero small {
+    color: #5da2ff;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    line-height: .95;
+    max-width: 650px;
+    margin: 15px 0;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: #4d9aff;
+}
+
+.hero p {
+    color: #9bb2d1;
+    max-width: 520px;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.ondas {
+    position: absolute;
+    right: 60px;
+    bottom: 45px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.onda {
+    width: 5px;
+    border-radius: 10px;
+    background: #3187ff;
+    animation: som 1s infinite ease-in-out;
+}
+
+.onda:nth-child(1) { height: 30px; animation-delay: .1s; }
+.onda:nth-child(2) { height: 65px; animation-delay: .2s; }
+.onda:nth-child(3) { height: 100px; animation-delay: .3s; }
+.onda:nth-child(4) { height: 48px; animation-delay: .4s; }
+.onda:nth-child(5) { height: 80px; animation-delay: .5s; }
+.onda:nth-child(6) { height: 35px; animation-delay: .6s; }
+.onda:nth-child(7) { height: 70px; animation-delay: .7s; }
+
+@keyframes som {
+    50% {
+        transform: scaleY(.35);
+        opacity: .5;
+    }
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.conteudo {
+    display: grid;
+    grid-template-columns: 1.5fr .8fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* =========================
+   PLAYLIST
+========================= */
+
+.bloco {
+    background: #0b1c38;
+    border: 1px solid #17345e;
+    border-radius: 22px;
+    padding: 25px;
+}
+
+.bloco-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bloco-titulo h2 {
+    font-size: 21px;
+}
+
+.bloco-titulo span {
+    color: #6385ae;
+    font-size: 13px;
+}
+
+.musica {
+    display: grid;
+    grid-template-columns: 55px 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-radius: 14px;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.musica:hover {
+    background: #10294d;
+}
+
+.capa {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.azul1 {
+    background: linear-gradient(135deg, #1468dd, #4fa0ff);
+}
+
+.azul2 {
+    background: linear-gradient(135deg, #062e68, #1685ff);
+}
+
+.azul3 {
+    background: linear-gradient(135deg, #113c8b, #38b7ff);
+}
+
+.azul4 {
+    background: linear-gradient(135deg, #071f45, #256fe0);
+}
+
+.info-musica h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.info-musica p {
+    color: #7189a9;
+    font-size: 13px;
+}
+
+.duracao {
+    color: #7088a8;
+    font-size: 13px;
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player {
+    background: #0d2345;
+    border: 1px solid #194175;
+    border-radius: 22px;
+    padding: 25px;
+}
+
+.capa-grande {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 250px;
+    margin: auto;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 30% 30%, #63b3ff, transparent 15%),
+        radial-gradient(circle at 70% 65%, #1357b8, transparent 35%),
+        linear-gradient(135deg, #09275a, #1687ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.3);
+}
+
+.player-info {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.player-info h2 {
+    font-size: 21px;
+}
+
+.player-info p {
+    color: #7592b8;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.barra {
+    height: 5px;
+    background: #1c385e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0 8px;
+}
+
+.progresso {
+    width: 48%;
+    height: 100%;
+    background: #3d95ff;
+    border-radius: inherit;
+}
+
+.tempo {
+    display: flex;
+    justify-content: space-between;
+    color: #7188a6;
+    font-size: 11px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.botao {
+    border: none;
+    background: transparent;
+    color: #a9c5e8;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.play {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #338fff;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 8px 25px rgba(51,143,255,.35);
+}
+
+/* =========================
+   GÊNEROS
+========================= */
+
+.generos {
+    margin-top: 25px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    border: 1px solid #1e4676;
+    background: #0b2243;
+    color: #8db3df;
+    border-radius: 30px;
+    padding: 9px 15px;
+    font-size: 13px;
+}
+
+.tag:hover {
+    background: #1455a0;
+    color: white;
+}
+
+/* =========================
+   FRASE
+========================= */
+
+.frase {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #1258a8, #0e3b78);
+    border-radius: 22px;
+    padding: 28px;
+    text-align: center;
+}
+
+.frase strong {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #9acaff;
+    margin-bottom: 10px;
+}
+
+.frase p {
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+    text-align: center;
+    color: #536d90;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 800px) {
+
+    .topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .hero {
+        padding: 35px 25px;
+    }
+
+    .ondas {
+        right: 30px;
+        opacity: .4;
+    }
+
+    .conteudo {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .pagina {
+        width: 94%;
+        padding-top: 25px;
+    }
+
+    .hero {
+        min-height: 360px;
+        padding: 30px 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .ondas {
+        right: 20px;
+        bottom: 25px;
+        transform: scale(.7);
+        transform-origin: right;
+    }
+
+    .bloco,
+    .player {
+        padding: 18px;
+    }
+
+    .musica {
+        grid-template-columns: 48px 1fr auto;
+        gap: 10px;
+    }
+
+    .capa {
+        width: 48px;
+        height: 48px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
-    <header>
-        <h1>Meu blog tech</h1>
-        <p>Vou compartilhar conhecimentos sobre musica e programação</p>
+
+<main class="pagina">
+
+    <!-- CABEÇALHO -->
+
+    <header class="topo">
+
+        <div class="marca">
+
+            <div class="logo">♫</div>
+
+            <div>
+                <div class="marca-texto">ESTAÇÃO</div>
+                <h2>Meu Som</h2>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+            <a href="#">Início</a>
+            <a href="#">Playlists</a>
+            <a href="#">Artistas</a>
+            <a href="#">Descobrir</a>
+        </nav>
+
     </header>
-    <main>
-        <article>
-            <img src="imagens.png"
-                alt="Logotipo conceitual de musica: um livro aberto de onde emerge um cérebro digital brilhante, cercado por ícones de Wi-Fi, circuitos e lâmpada de ideia. Cores em tons de azul e branco.">
-            <div>
-                <h2>Meu primeiro post</h2>
-                <p class="artigo-autor">Por: Vitória Silveira</p>
-                <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de
-                    musica.</p>
-                    É com muita alegria que os Alunos do Integral abrem as portas deste novo espaço. Aqui, 
-                    A nossa missão é conectar dois universos fascinantes: a precisão da programação e a sensibilidade da música.
-                    Acreditamos que códigos e acordes têm tudo a ver. Afinal,
-                     Ambos criam harmonia a partir de uma sequência lógica e dão vida a novas ideias! Se você quer aprender a programar, 
-                     Entender como a tecnologia transforma o som ou apenas descobrir curiosidades incríveis dosdos bastidores da música digital, 
-                     Você está no lugar certo.Prepare os seus fones de ouvido, 
-                     Abra o seu editor de código e sintonize com a gente. A nossa jornada musical e tecnológica começa agora! 
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <small>música para cada momento</small>
+
+        <h1>
+            dê play no seu <span>mundo.</span>
+        </h1>
+
+        <p>
+            Descubra sons, artistas e músicas que combinam
+            com o seu momento. Coloque os fones, aperte o play
+            e deixe a música falar.
+        </p>
+
+        <div class="ondas">
+            <div class="onda"></div>
+            <div class="onda"></div>
+            <div class="onda"></div>
+            <div class="onda"></div>
+            <div class="onda"></div>
+            <div class="onda"></div>
+            <div class="onda"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <section class="conteudo">
+
+        <!-- PLAYLIST -->
+
+        <div>
+
+            <div class="bloco">
+
+                <div class="bloco-titulo">
+                    <h2>Playlist da semana</h2>
+                    <span>12 músicas</span>
+                </div>
+
+
+                <div class="musica">
+
+                    <div class="capa azul1">♪</div>
+
+                    <div class="info-musica">
+                        <h3>Midnight Dreams</h3>
+                        <p>Blue Horizon</p>
+                    </div>
+
+                    <div class="duracao">3:42</div>
+
+                </div>
+
+
+                <div class="musica">
+
+                    <div class="capa azul2">♫</div>
+
+                    <div class="info-musica">
+                        <h3>Ocean Lights</h3>
+                        <p>Lucas Moon</p>
+                    </div>
+
+                    <div class="duracao">4:08</div>
+
+                </div>
+
+
+                <div class="musica">
+
+                    <div class="capa azul3">♬</div>
+
+                    <div class="info-musica">
+                        <h3>After The Rain</h3>
+                        <p>North Avenue</p>
+                    </div>
+
+                    <div class="duracao">3:17</div>
+
+                </div>
+
+
+                <div class="musica">
+
+                    <div class="capa azul4">♪</div>
+
+                    <div class="info-musica">
+                        <h3>Slow Motion</h3>
+                        <p>Echo Room</p>
+                    </div>
+
+                    <div class="duracao">2:56</div>
+
+                </div>
+
+
+                <div class="musica">
+
+                    <div class="capa azul1">♫</div>
+
+                    <div class="info-musica">
+                        <h3>City Lights</h3>
+                        <p>Blue Avenue</p>
+                    </div>
+
+                    <div class="duracao">3:51</div>
+
+                </div>
+
             </div>
-        </article>
-        <article>
-            <img src="imagem-blog.png"
-                alt="Logotipo conceitual de musica: um livro aberto de onde emerge um cérebro digital brilhante, cercado por ícones de Wi-Fi, circuitos e lâmpada de ideia. Cores em tons de azul e branco.">
-            <div>
-                <h2>Meu segundo post</h2>
-                <p class="artigo-autor">Por:Vitória Silveira</p>
-                <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de
-                    musica.</p>
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+
+
+            <!-- GÊNEROS -->
+
+            <div class="bloco generos">
+
+                <div class="bloco-titulo">
+                    <h2>Escolha seu clima</h2>
+                </div>
+
+                <div class="tags">
+
+                    <div class="tag">Pop</div>
+                    <div class="tag">Rock</div>
+                    <div class="tag">Indie</div>
+                    <div class="tag">Lo-fi</div>
+                    <div class="tag">R&B</div>
+                    <div class="tag">Eletrônica</div>
+                    <div class="tag">MPB</div>
+                    <div class="tag">Acústico</div>
+
+                </div>
+
             </div>
-        </article>
-    </main>
+
+        </div>
+
+
+        <!-- PLAYER -->
+
+        <aside>
+
+            <div class="player">
+
+                <div class="capa-grande">
+                    ♫
+                </div>
+
+                <div class="player-info">
+
+                    <h2>Ocean Lights</h2>
+
+                    <p>Lucas Moon</p>
+
+                </div>
+
+
+                <div class="barra">
+
+                    <div class="progresso"></div>
+
+                </div>
+
+                <div class="tempo">
+                    <span>1:58</span>
+                    <span>4:08</span>
+                </div>
+
+
+                <div class="controles">
+
+                    <button class="botao">↶</button>
+
+                    <button class="botao">◀</button>
+
+                    <button class="botao play">▶</button>
+
+                    <button class="botao">▶</button>
+
+                    <button class="botao">↷</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="frase">
+
+                <strong>PARA OUVIR HOJE</strong>
+
+                <p>
+                    “Algumas músicas não precisam
+                    de explicação. Elas simplesmente
+                    fazem sentir.”
+                </p>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+
+    <footer class="rodape">
+        feito para quem encontra histórias em cada música ♪
+    </footer>
+
+</main>
+
 </body>
-<script>
-    const botoes = document.querySelectorAll("button");
-
-    botoes.forEach(function (botao) {
-        let curtiu = false;
-        botao.addEventListener("click", botaoClicado);
-        function botaoClicado() {
-            console.log("fui clicado");
-            let texto = botao.querySelector("span");
-            if (curtiu === false){
-                texto.textContent++;
-                curtiu = true;
-            } else{
-                texto.textContent--;
-                curtiu = false;
-            }
-        }
-    })
-
-
-</script>
-
 </html>
